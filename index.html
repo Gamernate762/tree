@@ -62,7 +62,7 @@
             document.addEventListener("touchstart", startAudio);
         });
     </script>
-<video id="secretVideo" width="600" style="display:none;">
+    <video id="secretVideo" width="600" style="display:none;">
     <source src="video-output-92DEDOC9-7C2D-478D-BB1D-0D45D7646A78-1.mp4" type="video/mp4">
 </video>
 
@@ -81,8 +81,14 @@ document.addEventListener("click", () => {
         const video = document.getElementById("secretVideo");
         video.style.display = "block"; // Show it
         video.play();                  // Play once
+
+        // Hide the video again after it finishes playing
+        video.addEventListener("ended", () => {
+            video.style.display = "none";
+        });
     }
 });
 </script>
+
 </body>
 </html>
