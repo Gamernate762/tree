@@ -62,50 +62,11 @@
         });
     </script>
     
-    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-    <img src="tree.gif" alt="Tree" width="600" style="display: block;">
+    <img src="tree.gif" alt="Tree">
 
-    <!-- Secret Video (Always sits below, zero height until triggered) -->
-    <video id="secretVideo" width="600" style="display: none; margin-top: 20px;">
+    <video id="secretVideo" style="display: none; margin-top: 20px;">
         <source src="video-output-92DEDOC9-7C2D-478D-BB1D-0D45D7646A78-1.mp4" type="video/mp4">
     </video>
-
-</div>
-
-<script>
-let clicks = 0;
-let hasPlayed = false;
-
-document.addEventListener("click", () => {
-    if (hasPlayed) return;
-
-    clicks++;
-
-    if (clicks === 5) {
-        hasPlayed = true;
-
-        const video = document.getElementById("secretVideo");
-        
-        // Use 'block' inside a column flexbox to force it directly underneath
-        video.style.display = "block"; 
-        
-        // .play() returns a Promise. Catching errors tells us exactly why it won't play.
-        video.play().catch(error => {
-            console.error("Video playback failed: ", error);
-            // Fallback: If browser blocks sound, mute it and try playing again
-            video.muted = true;
-            video.play();
-        });
-
-        // Optional: Hide it again when done
-        video.addEventListener("ended", () => {
-            video.style.display = "none";
-        });
-    }
-});
-</script>
-
-            
 
 </body>
 </html>
