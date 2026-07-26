@@ -34,6 +34,15 @@
             user-select: none;
             -webkit-user-drag: none;
         }
+        #secretVideo {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            display: none;
+        }
+
     </style>
 </head>
 <body>
@@ -81,10 +90,16 @@ document.addEventListener("click", () => {
         hasPlayed = true;
 
         const video = document.getElementById("secretVideo");
-        video.style.display = "block"; // Show it
-        video.play();                  // Play once
+        video.style.display = "block";
+        video.play();
+
+        // Hide after playback
+        video.addEventListener("ended", () => {
+            video.style.display = "none";
+        });
     }
 });
+
 </script>
     
 </body>
