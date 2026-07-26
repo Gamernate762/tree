@@ -64,10 +64,28 @@
     
     <img src="tree.gif" alt="Tree">
     
-<video width="640" height="360" controls>
-  <source src="Manspeak.mp4" type="video/mp4">
-  Your browser does not support the video tag.
+    <video id="secretVideo" width="600" style="display:none;">
+    <source src="Manspeak.mp4" type="video/mp4">
 </video>
+
+<script>
+let clicks = 0;
+let hasPlayed = false;
+
+document.addEventListener("click", () => {
+    if (hasPlayed) return;
+
+    clicks++;
+
+    if (clicks === 5) {
+        hasPlayed = true;
+
+        const video = document.getElementById("secretVideo");
+        video.style.display = "block"; // Show it
+        video.play();                  // Play once
+    }
+});
+</script>
     
 </body>
 </html>
