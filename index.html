@@ -62,6 +62,27 @@
             document.addEventListener("touchstart", startAudio);
         });
     </script>
+<video id="secretVideo" width="600" style="display:none;">
+    <source src="video-output-E164BC23-2F42-4A0B-9918-E55806551472-1.mov" type="video/mov">
+</video>
 
+<script>
+let clicks = 0;
+let hasPlayed = false;
+
+document.addEventListener("click", () => {
+    if (hasPlayed) return;
+
+    clicks++;
+
+    if (clicks === 5) {
+        hasPlayed = true;
+
+        const video = document.getElementById("secretVideo");
+        video.style.display = "block"; // Show it
+        video.play();                  // Play once
+    }
+});
+</script>
 </body>
 </html>
